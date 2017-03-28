@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Custom Gallery</string>
+
+    <string name="album">Gallery</string>
+
+    <string name="title_album_image">Select Image Album</string>
+    <string name="title_album_video">Select Video Album</string>
+    <string name="title_select_video">Tap to select videos</string>
+
+    <string name="title_folder">Folder</string>
+    <string name="title_select_image">Tap to select images</string>
+
+    <string name="transition_string">hello</string>
+
+    <string name="add">ADD</string>
+    <string name="selected">selected</string>
+    <string name="image_limit_exceeded">Can select a maximum of %d images</string>
+    <string name="video_limit_exceeded">Can select a maximum of %d videos</string>
+    <string name="cant_select_image">This file is damaged.</string>
+
+    <string name="error_null_cursor">Oops, something went wrong!</string>
+    <string name="alert_video_max_duration_msg">Video exceeds the maximum allowed limit of </string>
+    <string name="alert_video_cant_select">Can\'t select this video.</string>
+
+    <!--Request Permission-->
+    <string name="permission_info">App requires permission to Storage to view images.</string>
+    <string name="permission_force">App requires permission to Storage to view images. Tap Settings and go to Permissions to grant permission.</string>
+    <string name="permission_ok">OK</string>
+    <string name="permission_settings">Settings</string>
+    <string name="permission_package">package</string>
+</resources>

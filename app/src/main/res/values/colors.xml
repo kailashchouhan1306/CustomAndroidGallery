@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!--<color name="multiple_image_select_primary">#FF9800</color>
+    <color name="multiple_image_select_primaryDark">#F57C00</color>
+    <color name="multiple_image_select_primaryLight">#FFE0B2</color>
+    <color name="multiple_image_select_accent">#FF5722</color>
+    <color name="multiple_image_select_primaryText">#212121</color>
+    <color name="multiple_image_select_secondaryText">#757575</color>
+    <color name="multiple_image_select_divider">#BDBDBD</color>
+    <color name="multiple_image_select_toolbarPrimaryText">#FFFFFF</color>
+    <color name="multiple_image_select_albumTextBackground">#99FFFFFF</color>
+    <color name="multiple_image_select_imageSelectBackground">#FFFFFF</color>-->
+</resources>

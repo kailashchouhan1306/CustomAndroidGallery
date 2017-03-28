@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:id="@+id/frameLayout"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:foregroundGravity="center"
+             android:padding="1dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/image_view_image_select"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/app_name"
+            android:scaleType="centerCrop"
+            android:src="@drawable/image_placeholder"
+            android:transitionName="@string/transition_string"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/multiple_image_select_albumTextBackground">
+
+            <TextView
+                android:id="@+id/tvDuration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:drawableLeft="@drawable/ic_clock_gallery"
+                android:drawablePadding="3dp"
+                android:drawableStart="@drawable/ic_clock_gallery"
+                android:gravity="center_vertical"
+                android:padding="5dp"
+                android:text="@string/app_name"
+                android:textColor="@color/multiple_image_select_primaryText"
+                android:textSize="13sp"/>
+
+            <TextView
+                android:id="@+id/tv_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:drawableLeft="@drawable/ic_collections_white"
+                android:drawablePadding="3dp"
+                android:drawableStart="@drawable/ic_collections_white"
+                android:gravity="center_vertical"
+                android:padding="5dp"
+                android:text="@string/app_name"
+                android:textColor="@color/multiple_image_select_primaryText"
+                android:textSize="13sp"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/view_alpha"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/multiple_image_select_imageSelectBackground"/>
+</FrameLayout>
