@@ -1,6 +1,7 @@
 package com.kailash.gallery.activity;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -46,6 +47,7 @@ public class ImageAlbumSelectActivity extends HelperActivity implements IOnItemC
     private String TAG = ImageAlbumSelectActivity.class.getSimpleName();
 
     private int mode;
+    private RecyclerView gridView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,11 +75,11 @@ public class ImageAlbumSelectActivity extends HelperActivity implements IOnItemC
         errorDisplay.setVisibility(View.INVISIBLE);
 
         progressBar = (ProgressBar) findViewById(R.id.progress_bar_album_select);
-        RecyclerView gridView = (RecyclerView) findViewById(R.id.grid_view_album_select);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
-        gridView.setLayoutManager(gridLayoutManager);
+        gridView = (RecyclerView) findViewById(R.id.grid_view_album_select);
+//        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
+        //gridView.setLayoutManager(new GridLayoutManager(this, 2));
 
-        /** Get extras */
+        // Get extras
         PickerConstants.limit = intent.getIntExtra(PickerConstants.INTENT_EXTRA_LIMIT, PickerConstants.DEFAULT_LIMIT);
         mode = intent.getIntExtra(PickerConstants.INTENT_EXTRA_MODE, PickerConstants.MODE_MULTIPLE);
 
@@ -97,7 +99,22 @@ public class ImageAlbumSelectActivity extends HelperActivity implements IOnItemC
         gridView.setAdapter(adapter);
         adapter.setOnItemClickListener(this);
 
+        orientationBasedUI(getResources().getConfiguration().orientation);
+
         checkPermission();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        orientationBasedUI(newConfig.orientation);
+    }
+
+    private void orientationBasedUI(int orientation) {
+        if (adapter != null) {
+            adapter.setOrientation(orientation);
+        }
+        gridView.setLayoutManager(new GridLayoutManager(this, orientation == Configuration.ORIENTATION_PORTRAIT ? 2 : 4));
     }
 
     @Override

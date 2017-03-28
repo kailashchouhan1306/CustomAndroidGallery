@@ -77,7 +77,7 @@ public class PickerConstants {
         final WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         final DisplayMetrics metrics = new DisplayMetrics();
         windowManager.getDefaultDisplay().getMetrics(metrics);
-        return metrics.widthPixels / 2;
+        return metrics.widthPixels;
     }
 
     /**

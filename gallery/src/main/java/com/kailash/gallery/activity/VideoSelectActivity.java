@@ -1,6 +1,7 @@
 package com.kailash.gallery.activity;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -55,6 +56,7 @@ public class VideoSelectActivity extends AppCompatActivity implements IOnItemCli
                     MediaStore.Video.VideoColumns.DURATION};
     private String TAG = VideoSelectActivity.class.getSimpleName();
     private int mode;
+    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -85,9 +87,9 @@ public class VideoSelectActivity extends AppCompatActivity implements IOnItemCli
         errorDisplay.setVisibility(View.INVISIBLE);
 
         progressBar = (ProgressBar) findViewById(R.id.progress_bar_image_select);
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.grid_view_image_select);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
-        recyclerView.setLayoutManager(gridLayoutManager);
+        recyclerView = (RecyclerView) findViewById(R.id.grid_view_image_select);
+//        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
+//        recyclerView.setLayoutManager(gridLayoutManager);
 
         // Get extras
         mode = intent.getIntExtra(PickerConstants.INTENT_EXTRA_MODE, PickerConstants.MODE_MULTIPLE);
@@ -107,8 +109,22 @@ public class VideoSelectActivity extends AppCompatActivity implements IOnItemCli
         adapter = new MediaPickerAdapter(getApplicationContext(), images);
         recyclerView.setAdapter(adapter);
         adapter.setOnItemClickListener(this);
+        orientationBasedUI(getResources().getConfiguration().orientation);
         loadVideoPool();
 //        checkPermission();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        orientationBasedUI(newConfig.orientation);
+    }
+
+    private void orientationBasedUI(int orientation) {
+        if (adapter != null) {
+            adapter.setOrientation(orientation);
+        }
+        recyclerView.setLayoutManager(new GridLayoutManager(this, orientation == Configuration.ORIENTATION_PORTRAIT ? 2 : 4));
     }
 
     @Override

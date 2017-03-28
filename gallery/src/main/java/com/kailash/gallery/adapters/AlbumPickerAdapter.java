@@ -1,6 +1,7 @@
 package com.kailash.gallery.adapters;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -48,7 +49,8 @@ public class AlbumPickerAdapter extends RecyclerView.Adapter<AlbumPickerAdapter.
     public void onBindViewHolder(final ViewHolder holder, int position) {
 
         Album album = albumsList.get(holder.getAdapterPosition());
-        int size = PickerConstants.getViewWidthHeight(context);
+//        int size = PickerConstants.getViewWidthHeight(context);
+        int size = orientation == Configuration.ORIENTATION_PORTRAIT ? PickerConstants.getViewWidthHeight(context) / 2 : PickerConstants.getViewWidthHeight(context) / 4;
 
         holder.itemView.getLayoutParams().width = size;
         holder.itemView.getLayoutParams().height = size;
@@ -86,10 +88,12 @@ public class AlbumPickerAdapter extends RecyclerView.Adapter<AlbumPickerAdapter.
         albumsList = null;
         context = null;
     }
-//
-//    public void setLayoutParams(int size) {
-//        this.size = size;
-//    }
+
+    int orientation;
+
+    public void setOrientation(int orientation) {
+        this.orientation = orientation;
+    }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private ImageView imageView;

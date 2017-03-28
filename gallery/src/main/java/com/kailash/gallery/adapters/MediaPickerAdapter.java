@@ -1,6 +1,7 @@
 package com.kailash.gallery.adapters;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -43,11 +44,18 @@ public class MediaPickerAdapter extends RecyclerView.Adapter<MediaPickerAdapter.
         return new MediaPickerAdapter.ViewHolder(view);
     }
 
+    int orientation;
+
+    public void setOrientation(int orientation) {
+        this.orientation = orientation;
+    }
+
     @Override
     public void onBindViewHolder(final ViewHolder viewHolder, int position) {
         MediaFile mediaFile = arrayList.get(viewHolder.getAdapterPosition());
 
-        int size = PickerConstants.getViewWidthHeight(context);
+        //int size = PickerConstants.getViewWidthHeight(context);
+        int size = orientation == Configuration.ORIENTATION_PORTRAIT ? PickerConstants.getViewWidthHeight(context) / 2 : PickerConstants.getViewWidthHeight(context) / 4;
 
         viewHolder.imageView.getLayoutParams().width = size;
         viewHolder.imageView.getLayoutParams().height = size;

@@ -22,7 +22,7 @@
         <activity
             android:name="com.kailash.gallery.activity.ImageAlbumSelectActivity"
             android:configChanges="orientation|screenSize"
-            android:screenOrientation="portrait"
+            android:screenOrientation="unspecified"
             android:theme="@style/MultipleImageSelectTheme">
             <!--android:theme="@style/OverrideMultipleImageSelectTheme"
             tools:replace="android:theme"-->
@@ -33,7 +33,7 @@
         <activity
             android:name="com.kailash.gallery.activity.ImageSelectActivity"
             android:configChanges="orientation|screenSize"
-            android:screenOrientation="portrait"
+            android:screenOrientation="unspecified"
             android:theme="@style/MultipleImageSelectTheme">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT"/>
@@ -42,7 +42,7 @@
         <activity
             android:name="com.kailash.gallery.activity.VideoAlbumSelectActivity"
             android:configChanges="orientation|screenSize"
-            android:screenOrientation="portrait"
+            android:screenOrientation="unspecified"
             android:theme="@style/MultipleImageSelectTheme">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT"/>
@@ -51,7 +51,7 @@
         <activity
             android:name="com.kailash.gallery.activity.VideoSelectActivity"
             android:configChanges="orientation|screenSize"
-            android:screenOrientation="portrait"
+            android:screenOrientation="unspecified"
             android:theme="@style/MultipleImageSelectTheme">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT"/>

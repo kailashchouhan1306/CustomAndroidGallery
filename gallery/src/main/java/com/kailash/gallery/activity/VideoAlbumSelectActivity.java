@@ -1,6 +1,7 @@
 package com.kailash.gallery.activity;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -45,6 +46,7 @@ public class VideoAlbumSelectActivity extends HelperActivity implements IOnItemC
     private String TAG = VideoAlbumSelectActivity.class.getSimpleName();
     private int videoDuration = 0;
     private int mode;
+    private RecyclerView recyclerViewAlbum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,9 +77,9 @@ public class VideoAlbumSelectActivity extends HelperActivity implements IOnItemC
         errorDisplay.setVisibility(View.INVISIBLE);
 
         progressBar = (ProgressBar) findViewById(R.id.progress_bar_album_select);
-        RecyclerView recyclerViewAlbum = (RecyclerView) findViewById(R.id.grid_view_album_select);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
-        recyclerViewAlbum.setLayoutManager(gridLayoutManager);
+        recyclerViewAlbum = (RecyclerView) findViewById(R.id.grid_view_album_select);
+//        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
+//        recyclerViewAlbum.setLayoutManager(gridLayoutManager);
 
         /** Get extras */
         PickerConstants.limit = intent.getIntExtra(PickerConstants.INTENT_EXTRA_LIMIT, PickerConstants.DEFAULT_LIMIT);
@@ -99,7 +101,23 @@ public class VideoAlbumSelectActivity extends HelperActivity implements IOnItemC
         recyclerViewAlbum.setAdapter(adapter);
         adapter.setOnItemClickListener(this);
 //        loadAlbumsPool();
+
+        orientationBasedUI(getResources().getConfiguration().orientation);
+
         checkPermission();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        orientationBasedUI(newConfig.orientation);
+    }
+
+    private void orientationBasedUI(int orientation) {
+        if (adapter != null) {
+            adapter.setOrientation(orientation);
+        }
+        recyclerViewAlbum.setLayoutManager(new GridLayoutManager(this, orientation == Configuration.ORIENTATION_PORTRAIT ? 2 : 4));
     }
 
     @Override
